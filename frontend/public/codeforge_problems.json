@@ -1,0 +1,861 @@
+[
+  {
+    "title": "Reverse a String",
+    "description": "Given a string, return its reverse. The input will be a single line containing the string.\n\nExample:\nInput: hello\nOutput: olleh",
+    "difficulty": "easy",
+    "tags": "string",
+    "visibleTestCases": [
+      { "input": "hello", "output": "olleh", "explanation": "Reversing 'hello' gives 'olleh'" },
+      { "input": "abcde", "output": "edcba", "explanation": "Reversing 'abcde' gives 'edcba'" }
+    ],
+    "hiddenTestCases": [
+      { "input": "racecar", "output": "racecar" },
+      { "input": "OpenAI", "output": "IAnepO" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim();\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    reverse(s.begin(), s.end());\n    cout << s;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next();\n        System.out.println(new StringBuilder(s).reverse().toString());\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim();\nconsole.log(s.split('').reverse().join(''));"
+      }
+    ]
+  },
+
+  {
+    "title": "Check Palindrome",
+    "description": "Given a string, determine if it is a palindrome. Print 'true' if it is a palindrome, otherwise print 'false'. Ignore case.\n\nExample:\nInput: racecar\nOutput: true",
+    "difficulty": "easy",
+    "tags": "string",
+    "visibleTestCases": [
+      { "input": "racecar", "output": "true", "explanation": "'racecar' reads the same forwards and backwards" },
+      { "input": "hello", "output": "false", "explanation": "'hello' reversed is 'olleh', which is different" }
+    ],
+    "hiddenTestCases": [
+      { "input": "Madam", "output": "true" },
+      { "input": "CodeForge", "output": "false" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next().toLowerCase();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim().toLowerCase();\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    transform(s.begin(), s.end(), s.begin(), ::tolower);\n    string r = s;\n    reverse(r.begin(), r.end());\n    cout << (s == r ? \"true\" : \"false\");\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next().toLowerCase();\n        String r = new StringBuilder(s).reverse().toString();\n        System.out.println(s.equals(r) ? \"true\" : \"false\");\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim().toLowerCase();\nconsole.log(s === s.split('').reverse().join('') ? 'true' : 'false');"
+      }
+    ]
+  },
+
+  {
+    "title": "Find Maximum Element",
+    "description": "Given an array of N integers, find and print the maximum element.\n\nInput format:\nFirst line: N (number of elements)\nSecond line: N space-separated integers\n\nExample:\nInput:\n5\n3 1 4 1 5\nOutput: 5",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      { "input": "5\n3 1 4 1 5", "output": "5", "explanation": "5 is the largest element in the array" },
+      { "input": "4\n-2 -5 -1 -8", "output": "-1", "explanation": "-1 is the largest among all negative numbers" }
+    ],
+    "hiddenTestCases": [
+      { "input": "6\n10 20 30 25 15 5", "output": "30" },
+      { "input": "1\n42", "output": "42" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst n = parseInt(lines[0]);\nconst arr = lines[1].split(' ').map(Number);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    cout << *max_element(arr, arr + n);\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int max = Integer.MIN_VALUE;\n        for(int i = 0; i < n; i++) {\n            int x = sc.nextInt();\n            if(x > max) max = x;\n        }\n        System.out.println(max);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\nconsole.log(Math.max(...arr));"
+      }
+    ]
+  },
+
+  {
+    "title": "FizzBuzz",
+    "description": "Given an integer N, print numbers from 1 to N. For multiples of 3 print 'Fizz', for multiples of 5 print 'Buzz', for multiples of both print 'FizzBuzz', otherwise print the number. Each on a new line.\n\nExample:\nInput: 5\nOutput:\n1\n2\nFizz\n4\nBuzz",
+    "difficulty": "easy",
+    "tags": "math",
+    "visibleTestCases": [
+      { "input": "5", "output": "1\n2\nFizz\n4\nBuzz", "explanation": "3 is divisible by 3 → Fizz, 5 is divisible by 5 → Buzz" },
+      { "input": "15", "output": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz", "explanation": "15 is divisible by both 3 and 5 → FizzBuzz" }
+    ],
+    "hiddenTestCases": [
+      { "input": "3", "output": "1\n2\nFizz" },
+      { "input": "20", "output": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n17\nFizz\n19\nBuzz" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    for(int i = 1; i <= n; i++) {\n        if(i % 15 == 0) cout << \"FizzBuzz\\n\";\n        else if(i % 3 == 0) cout << \"Fizz\\n\";\n        else if(i % 5 == 0) cout << \"Buzz\\n\";\n        else cout << i << \"\\n\";\n    }\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        for(int i = 1; i <= n; i++) {\n            if(i % 15 == 0) System.out.println(\"FizzBuzz\");\n            else if(i % 3 == 0) System.out.println(\"Fizz\");\n            else if(i % 5 == 0) System.out.println(\"Buzz\");\n            else System.out.println(i);\n        }\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\nfor(let i = 1; i <= n; i++) {\n    if(i % 15 === 0) console.log('FizzBuzz');\n    else if(i % 3 === 0) console.log('Fizz');\n    else if(i % 5 === 0) console.log('Buzz');\n    else console.log(i);\n}"
+      }
+    ]
+  },
+
+  {
+    "title": "Count Vowels",
+    "description": "Given a string, count and print the number of vowels (a, e, i, o, u — both upper and lowercase).\n\nExample:\nInput: Hello World\nOutput: 3",
+    "difficulty": "easy",
+    "tags": "string",
+    "visibleTestCases": [
+      { "input": "Hello World", "output": "3", "explanation": "Vowels are: e, o, o" },
+      { "input": "aeiou", "output": "5", "explanation": "All 5 characters are vowels" }
+    ],
+    "hiddenTestCases": [
+      { "input": "CodeForge", "output": "4" },
+      { "input": "rhythm", "output": "0" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string line;\n    getline(cin, line);\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String line = sc.nextLine();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst line = fs.readFileSync(0, 'utf8').trim();\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string line;\n    getline(cin, line);\n    string vowels = \"aeiouAEIOU\";\n    int count = 0;\n    for(char c : line)\n        if(vowels.find(c) != string::npos) count++;\n    cout << count;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String line = sc.nextLine().toLowerCase();\n        long count = line.chars().filter(c -> \"aeiou\".indexOf(c) >= 0).count();\n        System.out.println(count);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst line = fs.readFileSync(0, 'utf8').trim();\nconst count = (line.match(/[aeiouAEIOU]/g) || []).length;\nconsole.log(count);"
+      }
+    ]
+  },
+
+  { 
+    "title": "Two Sum",
+    "description": "Given an array of N integers and a target T, find two indices i and j such that arr[i] + arr[j] == T. Print the two indices (0-based) separated by a space. Assume exactly one solution exists.\n\nInput format:\nLine 1: N\nLine 2: N space-separated integers\nLine 3: T\n\nExample:\nInput:\n4\n2 7 11 15\n9\nOutput: 0 1",
+    "difficulty": "easy",
+    "tags": "array,hash-map",
+    "visibleTestCases": [
+      { "input": "4\n2 7 11 15\n9", "output": "0 1", "explanation": "arr[0] + arr[1] = 2 + 7 = 9" },
+      { "input": "3\n3 2 4\n6", "output": "1 2", "explanation": "arr[1] + arr[2] = 2 + 4 = 6" }
+    ],
+    "hiddenTestCases": [
+      { "input": "2\n3 3\n6", "output": "0 1" },
+      { "input": "5\n1 5 3 7 2\n8", "output": "1 3" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    int target;\n    cin >> target;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        int target = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\nconst target = Number(lines[2]);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> arr(n);\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    int target;\n    cin >> target;\n    unordered_map<int,int> mp;\n    for(int i = 0; i < n; i++) {\n        if(mp.count(target - arr[i])) {\n            cout << mp[target - arr[i]] << \" \" << i;\n            return 0;\n        }\n        mp[arr[i]] = i;\n    }\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        int target = sc.nextInt();\n        Map<Integer,Integer> map = new HashMap<>();\n        for(int i = 0; i < n; i++) {\n            if(map.containsKey(target - arr[i])) {\n                System.out.println(map.get(target - arr[i]) + \" \" + i);\n                return;\n            }\n            map.put(arr[i], i);\n        }\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\nconst target = Number(lines[2]);\nconst map = {};\nfor(let i = 0; i < arr.length; i++) {\n    const comp = target - arr[i];\n    if(map[comp] !== undefined) { console.log(map[comp] + ' ' + i); process.exit(); }\n    map[arr[i]] = i;\n}"
+      }
+    ]
+  },
+
+  {
+    "title": "Factorial",
+    "description": "Given a non-negative integer N, compute and print its factorial.\n\nNote: 0! = 1\n\nExample:\nInput: 5\nOutput: 120",
+    "difficulty": "easy",
+    "tags": "math,recursion",
+    "visibleTestCases": [
+      { "input": "5", "output": "120", "explanation": "5! = 5 × 4 × 3 × 2 × 1 = 120" },
+      { "input": "0", "output": "1", "explanation": "0! is defined as 1" }
+    ],
+    "hiddenTestCases": [
+      { "input": "10", "output": "3628800" },
+      { "input": "1", "output": "1" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n;\n    cin >> n;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        long n = sc.nextLong();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n;\n    cin >> n;\n    long long result = 1;\n    for(long long i = 2; i <= n; i++) result *= i;\n    cout << result;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        long n = sc.nextLong();\n        long result = 1;\n        for(long i = 2; i <= n; i++) result *= i;\n        System.out.println(result);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\nlet result = 1n;\nfor(let i = 2n; i <= BigInt(n); i++) result *= i;\nconsole.log(result.toString());"
+      }
+    ]
+  },
+
+  {
+    "title": "Second Largest Element",
+    "description": "Given an array of N distinct integers, find the second largest element.\n\nInput format:\nLine 1: N\nLine 2: N space-separated integers\n\nExample:\nInput:\n5\n12 35 1 10 34\nOutput: 34",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      { "input": "5\n12 35 1 10 34", "output": "34", "explanation": "Sorted: 1 10 12 34 35 — second largest is 34" },
+      { "input": "3\n7 3 5", "output": "5", "explanation": "Second largest among 3, 5, 7 is 5" }
+    ],
+    "hiddenTestCases": [
+      { "input": "4\n100 200 300 400", "output": "300" },
+      { "input": "2\n-1 -5", "output": "-5" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <climits>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int first = INT_MIN, second = INT_MIN;\n    for(int i = 0; i < n; i++) {\n        int x; cin >> x;\n        if(x > first) { second = first; first = x; }\n        else if(x > second) second = x;\n    }\n    cout << second;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;\n        for(int i = 0; i < n; i++) {\n            int x = sc.nextInt();\n            if(x > first) { second = first; first = x; }\n            else if(x > second) second = x;\n        }\n        System.out.println(second);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number).sort((a,b) => b - a);\nconsole.log(arr[1]);"
+      }
+    ]
+  },
+
+  {
+    "title": "Valid Anagram",
+    "description": "Given two strings s and t, return 'true' if t is an anagram of s, and 'false' otherwise. An anagram uses the same characters with the same frequencies.\n\nExample:\nInput:\nanagram\nnagaram\nOutput: true",
+    "difficulty": "easy",
+    "tags": "string,hash-map",
+    "visibleTestCases": [
+      { "input": "anagram\nnagaram", "output": "true", "explanation": "Both strings have the same character frequencies" },
+      { "input": "rat\ncar", "output": "false", "explanation": "Different characters: r,a,t vs c,a,r" }
+    ],
+    "hiddenTestCases": [
+      { "input": "listen\nsilent", "output": "true" },
+      { "input": "hello\nworld", "output": "false" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string s, t;\n    cin >> s >> t;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next(), t = sc.next();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst s = lines[0], t = lines[1];\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    string s, t;\n    cin >> s >> t;\n    sort(s.begin(), s.end());\n    sort(t.begin(), t.end());\n    cout << (s == t ? \"true\" : \"false\");\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        char[] s = sc.next().toCharArray();\n        char[] t = sc.next().toCharArray();\n        Arrays.sort(s); Arrays.sort(t);\n        System.out.println(Arrays.equals(s, t) ? \"true\" : \"false\");\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst sort = s => s.split('').sort().join('');\nconsole.log(sort(lines[0]) === sort(lines[1]) ? 'true' : 'false');"
+      }
+    ]
+  },
+
+  {
+    "title": "Fibonacci Nth Term",
+    "description": "Given N, print the Nth Fibonacci number (0-indexed). F(0)=0, F(1)=1, F(N)=F(N-1)+F(N-2).\n\nExample:\nInput: 6\nOutput: 8",
+    "difficulty": "easy",
+    "tags": "math,dynamic-programming",
+    "visibleTestCases": [
+      { "input": "6", "output": "8", "explanation": "Sequence: 0 1 1 2 3 5 8 — F(6)=8" },
+      { "input": "0", "output": "0", "explanation": "F(0) is defined as 0" }
+    ],
+    "hiddenTestCases": [
+      { "input": "10", "output": "55" },
+      { "input": "1", "output": "1" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    if(n == 0) { cout << 0; return 0; }\n    long long a = 0, b = 1;\n    for(int i = 2; i <= n; i++) { long long c = a + b; a = b; b = c; }\n    cout << b;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        if(n == 0) { System.out.println(0); return; }\n        long a = 0, b = 1;\n        for(int i = 2; i <= n; i++) { long c = a + b; a = b; b = c; }\n        System.out.println(b);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\nif(n === 0) { console.log(0); process.exit(); }\nlet a = 0, b = 1;\nfor(let i = 2; i <= n; i++) { [a, b] = [b, a + b]; }\nconsole.log(b);"
+      }
+    ]
+  },
+
+  {
+    "title": "Missing Number",
+    "description": "Given an array containing N distinct numbers in the range [0, N], find the one number that is missing.\n\nInput format:\nLine 1: N\nLine 2: N space-separated integers\n\nExample:\nInput:\n3\n3 0 1\nOutput: 2",
+    "difficulty": "easy",
+    "tags": "array,math",
+    "visibleTestCases": [
+      { "input": "3\n3 0 1", "output": "2", "explanation": "Range is [0,3], 2 is the missing number" },
+      { "input": "2\n0 1", "output": "2", "explanation": "Range is [0,2], 2 is missing" }
+    ],
+    "hiddenTestCases": [
+      { "input": "1\n0", "output": "1" },
+      { "input": "5\n0 1 2 3 5", "output": "4" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst n = parseInt(lines[0]);\nconst arr = lines[1].split(' ').map(Number);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int expected = n * (n + 1) / 2, actual = 0;\n    for(int i = 0; i < n; i++) { int x; cin >> x; actual += x; }\n    cout << expected - actual;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int expected = n * (n + 1) / 2, actual = 0;\n        for(int i = 0; i < n; i++) actual += sc.nextInt();\n        System.out.println(expected - actual);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst n = parseInt(lines[0]);\nconst arr = lines[1].split(' ').map(Number);\nconst expected = n * (n + 1) / 2;\nconsole.log(expected - arr.reduce((a, b) => a + b, 0));"
+      }
+    ]
+  },
+
+  {
+    "title": "Binary Search",
+    "description": "Given a sorted array of N integers and a target T, return the index of T using binary search. If not found, return -1.\n\nInput format:\nLine 1: N\nLine 2: N sorted space-separated integers\nLine 3: T\n\nExample:\nInput:\n6\n-1 0 3 5 9 12\n9\nOutput: 4",
+    "difficulty": "medium",
+    "tags": "array,binary-search",
+    "visibleTestCases": [
+      { "input": "6\n-1 0 3 5 9 12\n9", "output": "4", "explanation": "9 is at index 4" },
+      { "input": "6\n-1 0 3 5 9 12\n2", "output": "-1", "explanation": "2 is not in the array" }
+    ],
+    "hiddenTestCases": [
+      { "input": "1\n5\n5", "output": "0" },
+      { "input": "5\n1 3 5 7 9\n7", "output": "3" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    int target;\n    cin >> target;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        int target = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\nconst target = Number(lines[2]);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> arr(n);\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    int target;\n    cin >> target;\n    int lo = 0, hi = n - 1;\n    while(lo <= hi) {\n        int mid = lo + (hi - lo) / 2;\n        if(arr[mid] == target) { cout << mid; return 0; }\n        else if(arr[mid] < target) lo = mid + 1;\n        else hi = mid - 1;\n    }\n    cout << -1;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        int target = sc.nextInt();\n        int lo = 0, hi = n - 1;\n        while(lo <= hi) {\n            int mid = lo + (hi - lo) / 2;\n            if(arr[mid] == target) { System.out.println(mid); return; }\n            else if(arr[mid] < target) lo = mid + 1;\n            else hi = mid - 1;\n        }\n        System.out.println(-1);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\nconst target = Number(lines[2]);\nlet lo = 0, hi = arr.length - 1;\nwhile(lo <= hi) {\n    const mid = (lo + hi) >> 1;\n    if(arr[mid] === target) { console.log(mid); process.exit(); }\n    else if(arr[mid] < target) lo = mid + 1;\n    else hi = mid - 1;\n}\nconsole.log(-1);"
+      }
+    ]
+  },
+
+  {
+    "title": "Maximum Subarray Sum",
+    "description": "Given an array of N integers, find the contiguous subarray with the largest sum and print that sum. (Kadane's Algorithm)\n\nInput format:\nLine 1: N\nLine 2: N space-separated integers\n\nExample:\nInput:\n9\n-2 1 -3 4 -1 2 1 -5 4\nOutput: 6",
+    "difficulty": "medium",
+    "tags": "array,dynamic-programming",
+    "visibleTestCases": [
+      { "input": "9\n-2 1 -3 4 -1 2 1 -5 4", "output": "6", "explanation": "Subarray [4,-1,2,1] has the maximum sum of 6" },
+      { "input": "4\n-1 -2 -3 -4", "output": "-1", "explanation": "All negative — maximum single element is -1" }
+    ],
+    "hiddenTestCases": [
+      { "input": "1\n5", "output": "5" },
+      { "input": "5\n1 2 3 4 5", "output": "15" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <climits>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int maxSum = INT_MIN, cur = 0;\n    for(int i = 0; i < n; i++) {\n        int x; cin >> x;\n        cur += x;\n        maxSum = max(maxSum, cur);\n        if(cur < 0) cur = 0;\n    }\n    cout << maxSum;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int maxSum = Integer.MIN_VALUE, cur = 0;\n        for(int i = 0; i < n; i++) {\n            int x = sc.nextInt();\n            cur += x;\n            maxSum = Math.max(maxSum, cur);\n            if(cur < 0) cur = 0;\n        }\n        System.out.println(maxSum);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst arr = fs.readFileSync(0, 'utf8').trim().split('\\n')[1].split(' ').map(Number);\nlet maxSum = -Infinity, cur = 0;\nfor(const x of arr) {\n    cur += x;\n    maxSum = Math.max(maxSum, cur);\n    if(cur < 0) cur = 0;\n}\nconsole.log(maxSum);"
+      }
+    ]
+  },
+
+  {
+    "title": "Valid Parentheses",
+    "description": "Given a string containing only '(', ')', '{', '}', '[' and ']', determine if the input string is valid. A string is valid if every open bracket is closed by the same type of bracket in the correct order.\n\nPrint 'true' or 'false'.\n\nExample:\nInput: ()[]{}\nOutput: true",
+    "difficulty": "medium",
+    "tags": "string,stack",
+    "visibleTestCases": [
+      { "input": "()[]{}", "output": "true", "explanation": "All brackets are properly matched and ordered" },
+      { "input": "([)]", "output": "false", "explanation": "Brackets are interleaved incorrectly" }
+    ],
+    "hiddenTestCases": [
+      { "input": "{[]}", "output": "true" },
+      { "input": "(]", "output": "false" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim();\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    stack<char> st;\n    for(char c : s) {\n        if(c=='(' || c=='{' || c=='[') st.push(c);\n        else {\n            if(st.empty()) { cout << \"false\"; return 0; }\n            char top = st.top(); st.pop();\n            if((c==')' && top!='(') || (c=='}' && top!='{') || (c==']' && top!='[')) {\n                cout << \"false\"; return 0;\n            }\n        }\n    }\n    cout << (st.empty() ? \"true\" : \"false\");\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next();\n        Deque<Character> stack = new ArrayDeque<>();\n        for(char c : s.toCharArray()) {\n            if(c=='(' || c=='{' || c=='[') stack.push(c);\n            else {\n                if(stack.isEmpty()) { System.out.println(\"false\"); return; }\n                char top = stack.pop();\n                if((c==')' && top!='(') || (c=='}' && top!='{') || (c==']' && top!='[')) {\n                    System.out.println(\"false\"); return;\n                }\n            }\n        }\n        System.out.println(stack.isEmpty() ? \"true\" : \"false\");\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim();\nconst map = { ')':'(', '}':'{', ']':'[' };\nconst stack = [];\nfor(const c of s) {\n    if('({['.includes(c)) stack.push(c);\n    else { if(stack.pop() !== map[c]) { console.log('false'); process.exit(); } }\n}\nconsole.log(stack.length === 0 ? 'true' : 'false');"
+      }
+    ]
+  },
+
+  {
+    "title": "Climbing Stairs",
+    "description": "You are climbing a staircase with N steps. Each time you can climb 1 or 2 steps. In how many distinct ways can you climb to the top?\n\nExample:\nInput: 4\nOutput: 5\n\nThe 5 ways are: [1,1,1,1], [1,1,2], [1,2,1], [2,1,1], [2,2]",
+    "difficulty": "medium",
+    "tags": "dynamic-programming",
+    "visibleTestCases": [
+      { "input": "4", "output": "5", "explanation": "There are 5 distinct ways to climb 4 stairs" },
+      { "input": "2", "output": "2", "explanation": "Either (1+1) or (2) — 2 ways" }
+    ],
+    "hiddenTestCases": [
+      { "input": "1", "output": "1" },
+      { "input": "10", "output": "89" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    if(n <= 2) { cout << n; return 0; }\n    long long a = 1, b = 2;\n    for(int i = 3; i <= n; i++) { long long c = a + b; a = b; b = c; }\n    cout << b;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        if(n <= 2) { System.out.println(n); return; }\n        long a = 1, b = 2;\n        for(int i = 3; i <= n; i++) { long c = a + b; a = b; b = c; }\n        System.out.println(b);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst n = parseInt(fs.readFileSync(0, 'utf8').trim());\nif(n <= 2) { console.log(n); process.exit(); }\nlet a = 1, b = 2;\nfor(let i = 3; i <= n; i++) [a, b] = [b, a + b];\nconsole.log(b);"
+      }
+    ]
+  },
+
+  {
+    "title": "Merge Two Sorted Arrays",
+    "description": "Given two sorted arrays of sizes M and N, merge them into a single sorted array and print it.\n\nInput format:\nLine 1: M\nLine 2: M sorted integers\nLine 3: N\nLine 4: N sorted integers\n\nExample:\nInput:\n3\n1 3 5\n4\n2 4 6 8\nOutput: 1 2 3 4 5 6 8",
+    "difficulty": "medium",
+    "tags": "array,two-pointers",
+    "visibleTestCases": [
+      { "input": "3\n1 3 5\n4\n2 4 6 8", "output": "1 2 3 4 5 6 8", "explanation": "Both arrays merged and sorted together" },
+      { "input": "2\n1 2\n2\n3 4", "output": "1 2 3 4", "explanation": "First array comes entirely before the second" }
+    ],
+    "hiddenTestCases": [
+      { "input": "0\n\n3\n1 2 3", "output": "1 2 3" },
+      { "input": "3\n1 1 1\n3\n1 1 1", "output": "1 1 1 1 1 1" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int m;\n    cin >> m;\n    int a[m];\n    for(int i = 0; i < m; i++) cin >> a[i];\n    int n;\n    cin >> n;\n    int b[n];\n    for(int i = 0; i < n; i++) cin >> b[i];\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int m = sc.nextInt();\n        int[] a = new int[m];\n        for(int i = 0; i < m; i++) a[i] = sc.nextInt();\n        int n = sc.nextInt();\n        int[] b = new int[n];\n        for(int i = 0; i < n; i++) b[i] = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst a = lines[1].split(' ').map(Number);\nconst b = lines[3].split(' ').map(Number);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int m; cin >> m;\n    vector<int> a(m);\n    for(int i=0;i<m;i++) cin>>a[i];\n    int n; cin >> n;\n    vector<int> b(n);\n    for(int i=0;i<n;i++) cin>>b[i];\n    int i=0,j=0; bool first=true;\n    while(i<m && j<n) {\n        if(!first) cout<<' '; first=false;\n        if(a[i]<=b[j]) cout<<a[i++]; else cout<<b[j++];\n    }\n    while(i<m) { if(!first) cout<<' '; first=false; cout<<a[i++]; }\n    while(j<n) { if(!first) cout<<' '; first=false; cout<<b[j++]; }\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int m = sc.nextInt();\n        int[] a = new int[m];\n        for(int i=0;i<m;i++) a[i]=sc.nextInt();\n        int n = sc.nextInt();\n        int[] b = new int[n];\n        for(int i=0;i<n;i++) b[i]=sc.nextInt();\n        List<Integer> res = new ArrayList<>();\n        int i=0,j=0;\n        while(i<m&&j<n) { if(a[i]<=b[j]) res.add(a[i++]); else res.add(b[j++]); }\n        while(i<m) res.add(a[i++]);\n        while(j<n) res.add(b[j++]);\n        StringBuilder sb = new StringBuilder();\n        for(int k=0;k<res.size();k++) { if(k>0) sb.append(' '); sb.append(res.get(k)); }\n        System.out.println(sb);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst a = lines[1].split(' ').map(Number);\nconst b = lines[3].split(' ').map(Number);\nconst res = [];\nlet i=0,j=0;\nwhile(i<a.length&&j<b.length) { if(a[i]<=b[j]) res.push(a[i++]); else res.push(b[j++]); }\nwhile(i<a.length) res.push(a[i++]);\nwhile(j<b.length) res.push(b[j++]);\nconsole.log(res.join(' '));"
+      }
+    ]
+  },
+
+  {
+    "title": "Longest Common Prefix",
+    "description": "Given N strings, find their longest common prefix. If there is no common prefix, print an empty line.\n\nInput format:\nLine 1: N\nNext N lines: one string each\n\nExample:\nInput:\n3\nflower\nflow\nflight\nOutput: fl",
+    "difficulty": "medium",
+    "tags": "string",
+    "visibleTestCases": [
+      { "input": "3\nflower\nflow\nflight", "output": "fl", "explanation": "The longest prefix common to all three strings is 'fl'" },
+      { "input": "2\ndog\ncar", "output": "", "explanation": "No common prefix exists" }
+    ],
+    "hiddenTestCases": [
+      { "input": "1\nalone", "output": "alone" },
+      { "input": "3\nabc\nabc\nabc", "output": "abc" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    string arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        String[] arr = new String[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.next();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst n = parseInt(lines[0]);\nconst arr = lines.slice(1, n + 1);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin >> n;\n    string arr[n];\n    for(int i=0;i<n;i++) cin>>arr[i];\n    string prefix = arr[0];\n    for(int i=1;i<n;i++) {\n        while(arr[i].find(prefix) != 0)\n            prefix = prefix.substr(0, prefix.size()-1);\n    }\n    cout << prefix;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        String[] arr = new String[n];\n        for(int i=0;i<n;i++) arr[i]=sc.next();\n        String prefix = arr[0];\n        for(int i=1;i<n;i++)\n            while(!arr[i].startsWith(prefix))\n                prefix = prefix.substring(0, prefix.length()-1);\n        System.out.println(prefix);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines.slice(1);\nlet prefix = arr[0];\nfor(let i = 1; i < arr.length; i++)\n    while(!arr[i].startsWith(prefix)) prefix = prefix.slice(0, -1);\nconsole.log(prefix);"
+      }
+    ]
+  },
+
+  {
+    "title": "Single Number",
+    "description": "Given a non-empty array of integers where every element appears twice except for one, find that single element. Your solution must run in O(n) time and O(1) space.\n\nInput format:\nLine 1: N\nLine 2: N space-separated integers\n\nExample:\nInput:\n5\n4 1 2 1 2\nOutput: 4",
+    "difficulty": "medium",
+    "tags": "array,bit-manipulation",
+    "visibleTestCases": [
+      { "input": "5\n4 1 2 1 2", "output": "4", "explanation": "1 and 2 appear twice, 4 appears once" },
+      { "input": "3\n2 2 1", "output": "1", "explanation": "2 appears twice, 1 appears once" }
+    ],
+    "hiddenTestCases": [
+      { "input": "1\n7", "output": "7" },
+      { "input": "7\n1 2 3 4 3 2 1", "output": "4" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int arr[n];\n    for(int i = 0; i < n; i++) cin >> arr[i];\n    // write your code here (hint: XOR)\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        // write your code here (hint: XOR)\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst arr = lines[1].split(' ').map(Number);\n\n// write your code here (hint: XOR)\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n; cin >> n;\n    int result = 0;\n    for(int i = 0; i < n; i++) { int x; cin >> x; result ^= x; }\n    cout << result;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int result = 0;\n        for(int i = 0; i < n; i++) result ^= sc.nextInt();\n        System.out.println(result);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst arr = fs.readFileSync(0, 'utf8').trim().split('\\n')[1].split(' ').map(Number);\nconsole.log(arr.reduce((a, b) => a ^ b, 0));"
+      }
+    ]
+  },
+
+  {
+    "title": "Container With Most Water",
+    "description": "Given N non-negative integers representing vertical lines at positions 0 to N-1, find two lines that together with the x-axis forms a container holding the most water. Print the maximum amount of water.\n\nInput format:\nLine 1: N\nLine 2: N space-separated heights\n\nExample:\nInput:\n9\n1 8 6 2 5 4 8 3 7\nOutput: 49",
+    "difficulty": "medium",
+    "tags": "array,two-pointers",
+    "visibleTestCases": [
+      { "input": "9\n1 8 6 2 5 4 8 3 7", "output": "49", "explanation": "Lines at index 1 (height 8) and index 8 (height 7): min(8,7) × (8-1) = 7×7 = 49" },
+      { "input": "2\n1 1", "output": "1", "explanation": "Only two lines: min(1,1) × 1 = 1" }
+    ],
+    "hiddenTestCases": [
+      { "input": "4\n4 3 2 1", "output": "4" },
+      { "input": "6\n1 2 4 3 5 6", "output": "15" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int h[n];\n    for(int i = 0; i < n; i++) cin >> h[i];\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] h = new int[n];\n        for(int i = 0; i < n; i++) h[i] = sc.nextInt();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split('\\n');\nconst h = lines[1].split(' ').map(Number);\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int n; cin >> n;\n    vector<int> h(n);\n    for(int i=0;i<n;i++) cin>>h[i];\n    int lo=0, hi=n-1, maxWater=0;\n    while(lo<hi) {\n        maxWater = max(maxWater, min(h[lo],h[hi])*(hi-lo));\n        if(h[lo]<h[hi]) lo++; else hi--;\n    }\n    cout << maxWater;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        int n = sc.nextInt();\n        int[] h = new int[n];\n        for(int i=0;i<n;i++) h[i]=sc.nextInt();\n        int lo=0,hi=n-1,max=0;\n        while(lo<hi) {\n            max=Math.max(max,Math.min(h[lo],h[hi])*(hi-lo));\n            if(h[lo]<h[hi]) lo++; else hi--;\n        }\n        System.out.println(max);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst h = fs.readFileSync(0, 'utf8').trim().split('\\n')[1].split(' ').map(Number);\nlet lo=0,hi=h.length-1,max=0;\nwhile(lo<hi) {\n    max=Math.max(max,Math.min(h[lo],h[hi])*(hi-lo));\n    if(h[lo]<h[hi]) lo++; else hi--;\n}\nconsole.log(max);"
+      }
+    ]
+  },
+
+  {
+    "title": "Longest Substring Without Repeating Characters",
+    "description": "Given a string s, find the length of the longest substring without repeating characters.\n\nExample:\nInput: abcabcbb\nOutput: 3\n\nExplanation: The answer is 'abc', with length 3.",
+    "difficulty": "hard",
+    "tags": "string,sliding-window,hash-map",
+    "visibleTestCases": [
+      { "input": "abcabcbb", "output": "3", "explanation": "Longest substring without repeating chars is 'abc'" },
+      { "input": "bbbbb", "output": "1", "explanation": "All characters are the same, so answer is 1" }
+    ],
+    "hiddenTestCases": [
+      { "input": "pwwkew", "output": "3" },
+      { "input": "a", "output": "1" }
+    ],
+    "startCode": [
+      {
+        "language": "cpp",
+        "initialCode": "#include <iostream>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    // write your code here\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next();\n        // write your code here\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim();\n\n// write your code here\n"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    string s;\n    cin >> s;\n    unordered_map<char,int> mp;\n    int maxLen=0, left=0;\n    for(int right=0;right<(int)s.size();right++) {\n        if(mp.count(s[right])) left=max(left, mp[s[right]]+1);\n        mp[s[right]]=right;\n        maxLen=max(maxLen, right-left+1);\n    }\n    cout << maxLen;\n    return 0;\n}"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        String s = sc.next();\n        Map<Character,Integer> map = new HashMap<>();\n        int maxLen=0, left=0;\n        for(int right=0;right<s.length();right++) {\n            if(map.containsKey(s.charAt(right)))\n                left=Math.max(left,map.get(s.charAt(right))+1);\n            map.put(s.charAt(right),right);\n            maxLen=Math.max(maxLen,right-left+1);\n        }\n        System.out.println(maxLen);\n    }\n}"
+      },
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst s = fs.readFileSync(0, 'utf8').trim();\nconst map = {};\nlet maxLen=0, left=0;\nfor(let right=0;right<s.length;right++) {\n    if(map[s[right]] !== undefined) left=Math.max(left,map[s[right]]+1);\n    map[s[right]]=right;\n    maxLen=Math.max(maxLen,right-left+1);\n}\nconsole.log(maxLen);"
+      }
+    ]
+  }
+]
