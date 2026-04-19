@@ -12,9 +12,9 @@ const videoRouter = require("./routes/videoCreator");
 const cors = require('cors')
 
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true 
-}))
+  origin: 'https://codeforge-chinmaya.vercel.app',
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(cookieParser());
