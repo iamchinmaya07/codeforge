@@ -169,7 +169,3 @@ npm run dev
 - Planned: discussion/comments per problem, leaderboard, and user profile stats.
 
 ---
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
