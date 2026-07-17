@@ -200,20 +200,32 @@ const getProblemById = async(req,res)=>{
   }
 }
 
-const getAllProblem = async(req,res)=>{
 
-  try{
+// const getAllProblem = async(req,res)=>{
+
+//   try{
      
+//     const getProblem = await Problem.find({}).select('_id title difficulty tags');
+
+//    if(getProblem.length==0)
+//     return res.status(404).send("Problem is Missing");
+
+
+//    res.status(200).send(getProblem);
+//   }
+//   catch(err){
+//     res.status(500).send("Error: "+err);
+//   }
+// }
+
+
+const getAllProblem = async (req, res) => {
+  try {
     const getProblem = await Problem.find({}).select('_id title difficulty tags');
-
-   if(getProblem.length==0)
-    return res.status(404).send("Problem is Missing");
-
-
-   res.status(200).send(getProblem);
+    res.status(200).send(getProblem); // returns [] if empty — not an error
   }
-  catch(err){
-    res.status(500).send("Error: "+err);
+  catch (err) {
+    res.status(500).send("Error: " + err);
   }
 }
 
@@ -259,6 +271,7 @@ const submittedProblem = async(req,res)=>{
 
 
 
-module.exports = {createProblem,updateProblem,deleteProblem,getProblemById,getAllProblem,solvedAllProblembyUser,submittedProblem};
+
+module.exports = {createProblem, updateProblem, deleteProblem, getProblemById, getAllProblem, solvedAllProblembyUser, submittedProblem };
 
 

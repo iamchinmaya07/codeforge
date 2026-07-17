@@ -109,7 +109,6 @@ const logout = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
             sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict'
         });
-
         res.status(200).json({ message: "Logged out successfully" });
 
     } catch (err) {
@@ -173,5 +172,21 @@ const deleteProfile = async (req, res) => {
     }
 }
 
+const getUserCount = async (req, res) => {
+  try {
+    const users = await User.find({}).select('firstName lastName emailId role createdAt');
 
-module.exports = { register, login, logout, adminRegister, deleteProfile };
+    const totalUsers = await User.countDocuments();
+    res.status(200).send({ 
+        totalUsers, 
+        users 
+    });
+  }
+  catch (err) {
+    res.status(500).send("Error: " + err);
+  }
+}
+
+
+
+module.exports = { register, login, logout, adminRegister, deleteProfile, getUserCount };
