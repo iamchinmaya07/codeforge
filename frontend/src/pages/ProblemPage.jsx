@@ -113,6 +113,9 @@ useEffect(() => {
     );
   }
 
+
+const hasAccess = user?.role === 'admin' || user?.isPremium;
+
   return (
     <div className="h-screen flex flex-col overflow-hidden bg-base-100">
 
@@ -240,28 +243,42 @@ useEffect(() => {
 
                 {/* Solutions */}
                 {leftTab === 'solutions' && (
-                  <div>
-                    <h2 className="text-base font-medium mb-4">Reference solutions</h2>
-                    {problem.referenceSolution?.length ? (
-                      <div className="space-y-4">
-                        {problem.referenceSolution.map((sol, i) => (
-                          <div key={i} className="border border-base-300 rounded-xl overflow-hidden">
-                            <div className="bg-base-200 px-4 py-2.5 text-sm font-medium">
-                              {problem.title} — {sol.language}
-                            </div>
-                            <pre className="p-4 text-xs font-mono overflow-x-auto bg-[#1e1e1e] text-[#d4d4d4]">
-                              <code>{sol.completeCode}</code>
-                            </pre>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-sm text-base-content/40">
-                        Solutions will be available after you solve the problem.
+                <div>
+                  <h2 className="text-base font-medium mb-4">Reference solutions</h2>
+                  {!hasAccess ? (
+                    <div className="border border-amber-200 bg-green-900 rounded-xl p-6 text-center">
+                      <div className="text-2xl mb-2">🔒</div>
+                      <h3 className="text-sm font-medium mb-1">Reference solutions are a premium feature</h3>
+                      <p className="text-xs text-base-content/50 mb-4">
+                        Upgrade to premium to unlock reference solutions and video walkthroughs for every problem.
                       </p>
-                    )}
-                  </div>
-                )}
+                      <NavLink
+                        to="/premium"
+                        className="inline-block bg-amber-400 hover:bg-amber-500 text-white text-sm font-medium px-5 py-2 rounded-full transition-colors"
+                      >
+                        ⭐ Go Premium
+                      </NavLink>
+                    </div>
+                  ) : problem.referenceSolution?.length ? (
+                    <div className="space-y-4">
+                      {problem.referenceSolution.map((sol, i) => (
+                        <div key={i} className="border border-base-300 rounded-xl overflow-hidden">
+                          <div className="bg-base-200 px-4 py-2.5 text-sm font-medium">
+                            {problem.title} — {sol.language}
+                          </div>
+                          <pre className="p-4 text-xs font-mono overflow-x-auto bg-[#1e1e1e] text-[#d4d4d4]">
+                            <code>{sol.completeCode}</code>
+                          </pre>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-base-content/40">
+                      Solutions will be available after you solve the problem.
+                    </p>
+                  )}
+                </div>
+              )}
 
                 {/* Submissions */}
                 {leftTab === 'submissions' && (

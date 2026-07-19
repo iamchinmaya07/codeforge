@@ -32,15 +32,26 @@ const userSchema = new Schema({
         default: 'user'
     },
    problemSolved: {
-    type: [{
-        type: Schema.Types.ObjectId,
-        ref: 'problem'
-    }],
-    default: [] // Ensures every new user starts with an empty list instead of 'undefined'
-},
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'problem'
+        }],
+        default: [] // Ensures every new user starts with an empty list instead of 'undefined'
+    },
     password:{
         type:String,
         required: true
+    },
+
+    isPremium: {
+        type: Boolean,
+        default: false
+    },
+    premiumSince: {
+        type: Date
+    },
+    premiumExpiresAt: {
+        type: Date
     }
 },{
     timestamps:true

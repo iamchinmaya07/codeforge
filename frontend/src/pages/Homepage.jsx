@@ -87,8 +87,13 @@ function Homepage() {
           {dropdownOpen && (
             <div className="absolute right-0 top-10 bg-base-100 border border-base-300 rounded-xl w-44 overflow-hidden z-50 shadow-sm"
               onMouseLeave={() => setDropdownOpen(false)}>
-              <div className="px-4 py-2.5 text-sm font-medium border-b border-base-300">
+              <div className="px-4 py-2.5 text-sm font-medium border-b border-base-300 flex items-center gap-2">
                 {user?.firstName}
+                {(user?.isPremium || user?.role === 'admin') && (
+                  <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">
+                    {user?.role === 'admin' ? 'Admin' : 'Premium'}
+                  </span>
+                )}
               </div>
               {user?.role === 'admin' && (
                 <NavLink to="/admin"
@@ -97,6 +102,15 @@ function Homepage() {
                   Admin panel
                 </NavLink>
               )}
+
+              {!(user?.isPremium || user?.role === 'admin') && (
+                  <NavLink to="/premium"
+                    className="block px-4 py-2.5 text-sm text-amber-600 font-medium hover:bg-base-200"
+                    onClick={() => setDropdownOpen(false)}>
+                    ⭐ Go Premium
+                  </NavLink>
+                )}
+
               <button
                 onClick={handleLogout}
                 className="w-full text-left px-4 py-2.5 text-sm text-error hover:bg-base-200 border-t border-base-300">

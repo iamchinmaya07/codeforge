@@ -9,15 +9,9 @@ const problemRouter = require("./routes/problemCreator");
 const submitRouter = require("./routes/submit")
 const aiRouter = require("./routes/aiChatting")
 const videoRouter = require("./routes/videoCreator");
+const paymentRouter = require('./routes/payment')
 const cors = require('cors')
 
-// app.use(cors({
-//   origin: [
-//     process.env.FRONTEND_URL,
-//     "https://codeforge-chinmaya.vercel.app"
-//   ],
-//   credentials: true
-// }));
 
 const allowedOrigins = [
   "http://localhost:5173",
@@ -43,6 +37,7 @@ app.use('/problem',problemRouter);
 app.use('/submission',submitRouter);
 app.use("/video",videoRouter);
 app.use('/ai',aiRouter);
+app.use('/payment', paymentRouter);
 
 
 const InitalizeConnection = async ()=>{

@@ -163,40 +163,37 @@ const deleteProblem = async(req,res)=>{
 }
 
 
-const getProblemById = async(req,res)=>{
+const getProblemById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (!id) return res.status(400).send("ID is Missing");
 
-  const {id} = req.params;
-  try{
-     
-    if(!id)
-      return res.status(400).send("ID is Missing");
+    const hasAccess = req.result.role === 'admin' || req.result.isPremium;
 
-    const getProblem = await Problem.findById(id).select('_id title description difficulty tags visibleTestCases startCode referenceSolution ');
-   
-    // video ka jo bhi url wagera le aao
+    const selectFields = hasAccess
+      ? '_id title description difficulty tags visibleTestCases startCode referenceSolution'
+      : '_id title description difficulty tags visibleTestCases startCode';
 
-   if(!getProblem)
-    return res.status(404).send("Problem is Missing");
+    const getProblem = await Problem.findById(id).select(selectFields);
 
-   const videos = await SolutionVideo.findOne({problemId:id});
+    if (!getProblem) return res.status(404).send("Problem is Missing");
 
-   if(videos){   
-    
-   const responseData = {
-    ...getProblem.toObject(),
-    secureUrl:videos.secureUrl,
-    thumbnailUrl : videos.thumbnailUrl,
-    duration : videos.duration,
-   } 
-  
-   return res.status(200).send(responseData);
-   }
-    
-   res.status(200).send(getProblem);
+    const videos = await SolutionVideo.findOne({ problemId: id });
 
+    if (videos && hasAccess) {
+      const responseData = {
+        ...getProblem.toObject(),
+        secureUrl: videos.secureUrl,
+        thumbnailUrl: videos.thumbnailUrl,
+        duration: videos.duration,
+      };
+      return res.status(200).send(responseData);
+    }
+
+    res.status(200).send(getProblem);
   }
-  catch(err){
-    res.status(500).send("Error: "+err);
+  catch (err) {
+    res.status(500).send("Error: " + err);
   }
 }
 
