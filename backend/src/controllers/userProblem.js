@@ -198,24 +198,6 @@ const getProblemById = async (req, res) => {
 }
 
 
-// const getAllProblem = async(req,res)=>{
-
-//   try{
-     
-//     const getProblem = await Problem.find({}).select('_id title difficulty tags');
-
-//    if(getProblem.length==0)
-//     return res.status(404).send("Problem is Missing");
-
-
-//    res.status(200).send(getProblem);
-//   }
-//   catch(err){
-//     res.status(500).send("Error: "+err);
-//   }
-// }
-
-
 const getAllProblem = async (req, res) => {
   try {
     const getProblem = await Problem.find({}).select('_id title difficulty tags');
@@ -253,13 +235,8 @@ const submittedProblem = async(req,res)=>{
     const userId = req.result._id;
     const problemId = req.params.pid;
 
-   const ans = await Submission.find({userId,problemId});
-  
-  if(ans.length==0)
-    res.status(200).send("No Submission is persent");
-
-  res.status(200).send(ans);
-
+    const ans = await Submission.find({userId,problemId});
+    res.status(200).send(ans);
   }
   catch(err){
      res.status(500).send("Internal Server Error");

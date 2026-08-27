@@ -89,7 +89,7 @@ const submitCode = async (req,res)=>{
     }
 
 
-    // Store the result in Database in Submission
+        // Store the result in Database in Submission
     submittedResult.status   = status;
     submittedResult.testCasesPassed = testCasesPassed;
     submittedResult.errorMessage = errorMessage;
@@ -98,11 +98,8 @@ const submitCode = async (req,res)=>{
 
     await submittedResult.save();
     
-    // ProblemId ko insert karenge userSchema ke problemSolved mein if it is not persent there.
-    
-    // req.result == user Information
-
-    if(!req.result.problemSolved.includes(problemId)){
+    // ProblemId ko insert karenge userSchema ke problemSolved mein — ONLY if actually accepted
+    if(status === 'accepted' && !req.result.problemSolved.includes(problemId)){
       req.result.problemSolved.push(problemId);
       await req.result.save();
     }
@@ -117,9 +114,12 @@ const submitCode = async (req,res)=>{
     });
        
     }
-    catch(err){
-      res.status(500).send("Internal Server Error "+ err);
+    catch (err) {
+    if (err.response?.status === 429) {
+      return res.status(429).send("Code execution service is temporarily rate-limited. Please try again later.");
     }
+    res.status(500).send("Internal Server Error " + err);
+}
 }
 
 
@@ -191,9 +191,12 @@ const runCode = async(req,res)=>{
    });
       
    }
-   catch(err){
-     res.status(500).send("Internal Server Error "+ err);
-   }
+   catch (err) {
+    if (err.response?.status === 429) {
+      return res.status(429).send("Code execution service is temporarily rate-limited. Please try again later.");
+    }
+    res.status(500).send("Internal Server Error " + err);
+  }
 }
 
 

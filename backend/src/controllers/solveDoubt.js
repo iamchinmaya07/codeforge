@@ -46,7 +46,7 @@ You are an expert Data Structures and Algorithms (DSA) tutor specializing in hel
 `;
 
     const response = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile", // free & powerful
+      model: "openai/gpt-oss-120b", // free & powerful
       messages: [
         { role: "system", content: systemPrompt },
         ...formattedMessages,

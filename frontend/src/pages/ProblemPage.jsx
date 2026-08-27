@@ -34,6 +34,7 @@ const ProblemPage = () => {
   const [submitResult, setSubmitResult] = useState(null);
   const [leftTab, setLeftTab]           = useState('description');
   const [rightTab, setRightTab]         = useState('code');
+  const [submissions, setSubmissions] = useState([]);
 
 useEffect(() => {
     const fetchProblem = async () => {
@@ -63,13 +64,26 @@ useEffect(() => {
     fetchProblem();
   }, [problemId]);
 
-  useEffect(() => {
+useEffect(() => {
     if (!problem) return;
     const starter = problem.startCode.find(
       (sc) => sc.language === LANG_MAP[selectedLang]
     )?.initialCode || '';
     setCode(starter);
   }, [selectedLang, problem]);
+
+useEffect(() => {
+  const fetchSubmissions = async () => {
+    try {
+      const { data } = await axiosClient.get(`/problem/submittedProblem/${problemId}`);
+      setSubmissions(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error('Error fetching submissions:', err);
+      setSubmissions([]);
+    }
+  };
+  if (problemId) fetchSubmissions();
+}, [problemId]);
 
   const handleRun = async () => {
     setLoading(true);
@@ -283,8 +297,16 @@ const hasAccess = user?.role === 'admin' || user?.isPremium;
                 {/* Submissions */}
                 {leftTab === 'submissions' && (
                   <div>
+                    {submissions.length === 0 ? (
+                      <div className='text-center py-16 text-base-content/40 text-sm'>
+                        You haven't submitted any code for this problem yet.
+                      </div>
+                    ) : (
+                      <div>
                     <h2 className="text-base font-medium mb-4">My submissions</h2>
                     <SubmissionHistory problemId={problemId} />
+                    </div>
+                  )}
                   </div>
                 )}
 
@@ -399,10 +421,10 @@ const hasAccess = user?.role === 'admin' || user?.isPremium;
                 <div>
                   <div className={`rounded-xl p-4 mb-4 border ${
                     runResult.success
-                      ? 'bg-emerald-50 border-emerald-200'
-                      : 'bg-red-50 border-red-200'}`}>
+                      ? 'bg-base-200 border-emerald-200'
+                      : 'bg-base-200 border-red-200'}`}>
                     <p className={`text-sm font-medium mb-1 ${
-                      runResult.success ? 'text-emerald-700' : 'text-red-600'}`}>
+                      runResult.success ? 'text-emerald-400' : 'text-red-600'}`}>
                       {runResult.success ? 'All test cases passed' : 'Some test cases failed'}
                     </p>
                     {runResult.runtime && (
@@ -450,8 +472,8 @@ const hasAccess = user?.role === 'admin' || user?.isPremium;
                 <div>
                   <div className={`rounded-xl p-4 mb-4 border ${
                     submitResult.accepted
-                      ? 'bg-emerald-50 border-emerald-200'
-                      : 'bg-red-50 border-red-200'}`}>
+                      ? 'bg-base-200 border-emerald-200'
+                      : 'bg-base-200 border-red-200'}`}>
                     <p className={`text-base font-medium mb-2 ${
                       submitResult.accepted ? 'text-emerald-700' : 'text-red-600'}`}>
                       {submitResult.accepted ? 'Accepted' : submitResult.error}
